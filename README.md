@@ -24,6 +24,7 @@ ________
 # Introduction
 ________
 ## Background: 
+The financial services sector faces increasing demands to understand and manage risks associated with loan issuance and repayment. With the growing complexity of loan portfolios, lenders need data-driven insights to guide decision-making in areas like risk assessment, loan approval, and customer satisfaction. As part of The Data Immersed (TDI) team, the objective is to conduct a comprehensive analysis of TDI's loan data to identify key trends, risks, and areas for improvement. By examining factors like borrower demographics, loan terms, and repayment performance, this project will help TDI refine its loan issuance criteria, manage interest rates effectively, and improve overall profitability while mitigating default risk.
 ________
 ## Problem Statement
 The goal of the Loan Data Analysis is to reduce TDI’s loan default rates and optimize loan performance by analyzing borrower risk profiles, interest rates, and customer demographics. We aim to provide actionable insights that will allow TDI to improve loan approval criteria, optimize interest rates based on risk, and identify key factors that influence loan default, thus enhancing overall profitability and customer satisfaction.
@@ -72,12 +73,32 @@ ________
 ________
 ## Data Cleaning:
 ![Screenshot (102)](https://github.com/user-attachments/assets/2fe85595-4460-414b-b115-64e303326e9a)
-- Initial Dataset: The dataset initially contained 9,995 rows and 21 columns.
-- Duplicate Check: 
-- Missing Values: 
-- Column Removal: Certain columns were removed to focus on essential data:
-  1. A Shipping Time column was calculated by subtracting the Order Date from the Ship Date to gauge delivery timelines, potentially useful for further analysis.
-- Final Dataset: After cleaning, the dataset retained 9,995 rows and 17 columns, containing only the most relevant fields for a focused analysis of sales revenue.
+1. **Remove Duplicates**
+- Action: Highlighted all data (Ctrl + A) and used the Data tab > Remove Duplicates option. This removed 15 duplicate entries, leaving 38,574 unique records.
+- Reason: Removing duplicates ensures data accuracy by eliminating repeated entries that could skew loan performance metrics and lead to unreliable analysis.
+2. **Handle Missing Values**
+- Action: Replaced empty cells in the emp_title column with "Unknown" to standardize entries.
+- Reason: Filling missing values maintains data completeness, which helps avoid gaps in analysis and ensures that visualizations and calculations reflect all records accurately.
+3. **Data Type Formatting**
+- Action: Adjusted data types to ensure each column reflects the correct data type (e.g., numbers for income, dates for application and payment records).
+- Reason: Correct data types prevent calculation errors and make analysis easier. For instance, formatted dates enable chronological sorting, and numeric formats support aggregations.
+4. **Text Formatting**
+- Action: Applied the PROPER function to application_type and purpose columns to convert text from uppercase to proper case.
+- Reason: Consistent text formatting enhances readability and prevents issues with case sensitivity when filtering or analyzing text data.
+5. **Column Naming**
+- Action: Renamed the column home_Oership to Home_Ownership to correct the spelling and make it more intuitive.
+- Reason: Clear, accurate column names improve data readability, reducing the risk of errors during analysis and making the dataset more accessible for other users.
+6. **Date Format Standardization**
+- Action: Standardized date formats by using Find and Replace to replace hyphens (-) with slashes (/) in the issue_date, last_credit_pull_date, last_payment_date, and next_payment_date columns.
+- Reason: Consistent date formatting allows for accurate date-based sorting, filtering, and analysis. It also prevents formatting issues when creating time-based visualizations.
+7. Emp_Length Conversion
+- Action: Created an additional column, Emp_Length_Numeric, using the formula
+---Excel
+=IFS([@[emp_length]]="< 1 year",0, [@[emp_length]]="1 year",1, [@[emp_length]]="2 years",2, [@[emp_length]]="3 years",3, [@[emp_length]]="4 years",4, [@[emp_length]]="5 years",5, [@[emp_length]]="6 years",6, [@[emp_length]]="7 years",7, [@[emp_length]]="8 years",8, [@[emp_length]]="9 years",9, [@[emp_length]]="10+ years",10)
+---
+   to convert the textual emp_length values into numeric format.
+
+Reason: Converting emp_length into a numeric format allows for easier data analysis, as numeric values are more suitable for statistical calculations and comparisons. This ensures that employment length is standardized and ready for analysis or modeling.
   ![Screenshot (101)](https://github.com/user-attachments/assets/9cc64065-d0be-4793-919a-d71aa4faf418)
 ___________
 ## Exploratory Data Analysis (EDA):
