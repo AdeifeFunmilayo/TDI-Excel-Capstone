@@ -91,11 +91,11 @@ ________
 6. **Date Format Standardization**
 - Action: Standardized date formats by using Find and Replace to replace hyphens (-) with slashes (/) in the issue_date, last_credit_pull_date, last_payment_date, and next_payment_date columns.
 - Reason: Consistent date formatting allows for accurate date-based sorting, filtering, and analysis. It also prevents formatting issues when creating time-based visualizations.
-7. Emp_Length Conversion
+7. **Emp_Length Conversion**
 - Action: Created an additional column, Emp_Length_Numeric, using the formula
----Excel
+```Excel
 =IFS([@[emp_length]]="< 1 year",0, [@[emp_length]]="1 year",1, [@[emp_length]]="2 years",2, [@[emp_length]]="3 years",3, [@[emp_length]]="4 years",4, [@[emp_length]]="5 years",5, [@[emp_length]]="6 years",6, [@[emp_length]]="7 years",7, [@[emp_length]]="8 years",8, [@[emp_length]]="9 years",9, [@[emp_length]]="10+ years",10)
----
+```
    to convert the textual emp_length values into numeric format.
 
 Reason: Converting emp_length into a numeric format allows for easier data analysis, as numeric values are more suitable for statistical calculations and comparisons. This ensures that employment length is standardized and ready for analysis or modeling.
@@ -108,15 +108,23 @@ ___________
 - Profit Margin.
   ________
 # Analysis
-________
-  ## Business Questions
   ________
 ## Analysis Questions
 ________
-#### Top Revenue and Profit Products: Identify products and categories that drive the most revenue and profit. These insights will guide targeted marketing.
+#### What is the distribution of loan statuses (Fully Paid, Charged Off, Current) across different grades?
   ## Approach
+  To analyze the breakdown of loan status by loan grade, we used a pivot table to organize and summarize the data.
+- Columns: Loan status (Fully Paid, Charged Off, Current).
+- Rows: Loan grade (A, B, C, D, E, F, G).
+- Values: Loan ID (using the Count function to count the number of records in each category).
   ## Findings
+- Grade A loans represent the lowest risk, with a high percentage of fully paid loans (93.9%) and a very low percentage of loans that are charged off (5.7%).
+- Grades B and C maintain a relatively lower default risk but show an increasing number of charged-off loans as the grade decreases.
+- Grades D, E, F, and G show higher proportions of charged-off loans, with Grade G exhibiting the highest risk of defaults (31.3% charged off), followed closely by Grade F (30.3% charged off).
+- As the loan grade decreases from A to G, the risk of default (charged-off loans) increases significantly, suggesting that more stringent loan approval criteria may be needed for lower-grade loans.
    ## Results
+  ![Screenshot (103)](https://github.com/user-attachments/assets/cec6681f-c1d6-4b44-87d9-93bcc470e5c2)
+![Picture1](https://github.com/user-attachments/assets/02b610d6-c869-4945-aa81-3802b374fd12)
    ________
 #### Customer Segment and Region Performance: Assess sales and profitability across customer segments and regions to identify high-value markets for strategic marketing focus.
   ## Approach
