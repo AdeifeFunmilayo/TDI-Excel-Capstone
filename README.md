@@ -73,33 +73,33 @@ ________
 ________
 ## Data Cleaning:
 ![Screenshot (102)](https://github.com/user-attachments/assets/2fe85595-4460-414b-b115-64e303326e9a)
-1. **Remove Duplicates**
-- Action: Highlighted all data (Ctrl + A) and used the Data tab > Remove Duplicates option. This removed 15 duplicate entries, leaving 38,574 unique records.
-- Reason: Removing duplicates ensures data accuracy by eliminating repeated entries that could skew loan performance metrics and lead to unreliable analysis.
-2. **Handle Missing Values**
-- Action: Replaced empty cells in the emp_title column with "Unknown" to standardize entries.
-- Reason: Filling missing values maintains data completeness, which helps avoid gaps in analysis and ensures that visualizations and calculations reflect all records accurately.
-3. **Data Type Formatting**
-- Action: Adjusted data types to ensure each column reflects the correct data type (e.g., numbers for income, dates for application and payment records).
-- Reason: Correct data types prevent calculation errors and make analysis easier. For instance, formatted dates enable chronological sorting, and numeric formats support aggregations.
-4. **Text Formatting**
-- Action: Applied the PROPER function to application_type and purpose columns to convert text from uppercase to proper case.
-- Reason: Consistent text formatting enhances readability and prevents issues with case sensitivity when filtering or analyzing text data.
-5. **Column Naming**
-- Action: Renamed the column home_Oership to Home_Ownership to correct the spelling and make it more intuitive.
-- Reason: Clear, accurate column names improve data readability, reducing the risk of errors during analysis and making the dataset more accessible for other users.
-6. **Date Format Standardization**
-- Action: Standardized date formats by using Find and Replace to replace hyphens (-) with slashes (/) in the issue_date, last_credit_pull_date, last_payment_date, and next_payment_date columns.
-- Reason: Consistent date formatting allows for accurate date-based sorting, filtering, and analysis. It also prevents formatting issues when creating time-based visualizations.
-7. **Emp_Length Conversion**
-- Action: Created an additional column, Emp_Length_Numeric, using the formula
-```Excel
-=IFS([@[emp_length]]="< 1 year",0, [@[emp_length]]="1 year",1, [@[emp_length]]="2 years",2, [@[emp_length]]="3 years",3, [@[emp_length]]="4 years",4, [@[emp_length]]="5 years",5, [@[emp_length]]="6 years",6, [@[emp_length]]="7 years",7, [@[emp_length]]="8 years",8, [@[emp_length]]="9 years",9, [@[emp_length]]="10+ years",10)
-```
-   to convert the textual emp_length values into numeric format.
+**Remove Duplicates**
+- Action: Highlighted all data (Ctrl + A) and used Data > Remove Duplicates. This removed 15 duplicate entries, leaving 38,574 unique records.
+- Reason: Eliminating duplicates improves data accuracy by removing repeated entries that could distort loan performance metrics, leading to more reliable analysis.
 
-Reason: Converting emp_length into a numeric format allows for easier data analysis, as numeric values are more suitable for statistical calculations and comparisons. This ensures that employment length is standardized and ready for analysis or modeling.
-  ![Screenshot (101)](https://github.com/user-attachments/assets/9cc64065-d0be-4793-919a-d71aa4faf418)
+**Handle Missing Values**  
+- Action: Replaced empty cells in the emp_title column with "Unknown" to standardize entries.
+- Reason: Filling missing values helps maintain data completeness, ensuring that visualizations and calculations include all records accurately.
+
+**Convert Abbreviations to Standard Terms**  
+- Action: Converted abbreviated entries to their full terms in specific columns:
+1. Address_State: Replaced state abbreviations (e.g., "CA" to "California").
+2. Home_Ownership: Expanded ownership types (e.g., "O" to "Owned").
+3. Verification_Status: Standardized verification abbreviations (e.g., "V" to "Verified").
+- Reason: Using full terms enhances readability and ensures consistent interpretation, especially when sharing the data with others who might not be familiar with the abbreviations.
+
+**Text Formatting**
+- Action: Applied the PROPER function to the application_type and purpose columns to convert text from uppercase to proper case.
+- Reason: Consistent text formatting enhances readability and helps prevent issues with case sensitivity during filtering or analysis.
+
+**Column Naming**
+- Action: Renamed columns for clarity and corrected typos (e.g., home_Oership to Home_Ownership, emp_title to Emp-Title).
+- Reason: Clear and accurate column names improve understanding and make it easier to work with data, especially in collaborative environments.
+
+**Date Format Standardization**
+- Action: Standardized date formats by using Find and Replace to replace hyphens (-) with slashes (/) in columns like issue_date, last_credit_pull_date, last_payment_date, and next_payment_date.
+- Reason: Consistent date formatting ensures accurate date-based sorting, filtering, and analysis. It also reduces formatting issues in time-based visualizations.
+![Screenshot (105)](https://github.com/user-attachments/assets/68efe21f-df49-434c-b81f-3436bdefb616)
 ___________
 ## Exploratory Data Analysis (EDA):
 - Total Sales
@@ -111,21 +111,28 @@ ___________
   ________
 ## Analysis Questions
 ________
-#### What is the distribution of loan statuses (Fully Paid, Charged Off, Current) across different grades?
-  ## Approach
-  To analyze the breakdown of loan status by loan grade, we used a pivot table to organize and summarize the data.
-- Columns: Loan status (Fully Paid, Charged Off, Current).
-- Rows: Loan grade (A, B, C, D, E, F, G).
-- Values: Loan ID (using the Count function to count the number of records in each category).
-  ## Findings
-- Grade A loans represent the lowest risk, with a high percentage of fully paid loans (93.9%) and a very low percentage of loans that are charged off (5.7%).
-- Grades B and C maintain a relatively lower default risk but show an increasing number of charged-off loans as the grade decreases.
-- Grades D, E, F, and G show higher proportions of charged-off loans, with Grade G exhibiting the highest risk of defaults (31.3% charged off), followed closely by Grade F (30.3% charged off).
-- As the loan grade decreases from A to G, the risk of default (charged-off loans) increases significantly, suggesting that more stringent loan approval criteria may be needed for lower-grade loans.
+#### Loan Default Rates by grades:
+## Approach
+To analyze the loan default rates, we used a pivot table to organize and summarize the data, as follows:
+- Columns: Loan status categories (Fully Paid, Charged Off, Current) to show the distribution of loan outcomes.
+- Rows: Loan grade categories (A, B, C, D, E, F, G) to compare default rates across different grades.
+- Values: Loan ID (using the Count function to calculate the number of records in each category), enabling us to evaluate the loan performance for each grade.
+- After setting up the pivot table, we calculated the default rate for each loan grade using the formula:
+```Excel
+=GETPIVOTDATA("ID",$A$3,"Grade","A","Loan_Status","Charged Off")/GETPIVOTDATA("ID",$A$3,"Grade","A")
+```
+- Converted the result to a percentage format to make the default rates easy to interpret.
+  
+**This calculation provides the percentage of loans that were charged off within each grade, helping to identify high-risk segments.**
+## Findings
+- Grade A: This grade has the lowest risk, with 93.9% of loans fully paid and only 5.7% charged off. This indicates that loans in Grade A are the most stable, showing minimal default risk.
+- Grades B and C: These grades show a gradual increase in risk but maintain relatively lower default rates compared to the lower grades. Grade B has a 12% default rate, while Grade C has a 16% default rate, indicating they are generally safer than grades D and below but less secure than Grade A.
+- Grades D, E, F, and G: These grades exhibit significantly higher default rates, with risk escalating as the grade decreases. Grade D has a 21% default rate, Grade E has 25%, Grade F has 30%, and Grade G has the highest default rate at 31%. This indicates that loans in these grades are the riskiest, with nearly a third of Grade F and G loans being charged off.
+- Overall Trend: As the loan grade decreases from A to G, the default rate increases consistently, indicating a strong correlation between lower loan grades and higher risk. This trend suggests that TDI should consider implementing stricter loan approval criteria for lower-grade loans (D-G) to mitigate potential risks and default rates effectively.
    ## Results
-  ![Screenshot (103)](https://github.com/user-attachments/assets/cec6681f-c1d6-4b44-87d9-93bcc470e5c2)
-![Picture1](https://github.com/user-attachments/assets/02b610d6-c869-4945-aa81-3802b374fd12)
-   ________
+![Screenshot (107)](https://github.com/user-attachments/assets/4a089326-9616-422e-8fee-f51bafd1b07a)
+![Defaut Rate by Grade](https://github.com/user-attachments/assets/78ff2135-4876-492d-ad49-76f979f3ae0e)
+________
 #### Customer Segment and Region Performance: Assess sales and profitability across customer segments and regions to identify high-value markets for strategic marketing focus.
   ## Approach
   ## Findings
