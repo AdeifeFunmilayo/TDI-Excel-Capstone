@@ -44,30 +44,32 @@ ________
 he loan dataset used in this analysis was provided by The Data Immersed (TDI) and includes anonymized information on borrower demographics, loan details, interest rates, payment history, and loan status. This dataset serves as the foundation for analyzing loan performance, identifying risk factors, and exploring customer profiles to support TDI's decision-making.
 ________
 ## Data Characteristics
-- id- Unique identifier for each loan record.
-- address_state- Abbreviation of the state where the borrower resides.
-- application_type-	Type of loan application, e.g., INDIVIDUAL.
-- emp_length-	Length of employment of the borrower, in years.
-- emp_title-	Job title of the borrower.
-- grade-	Grade assigned to the loan, indicating the risk level (e.g., A, B, C).
-- home_ownership-	Home ownership status of the borrower (R-RENT,MO- MORTGAGE, O-OWN).
-- issue_date-	Date the loan was issued.
-- last_credit_pull_date-	Date of the last credit pull on the borrower.
-- last_payment_date-	Date of the last payment made by the borrower.
-- loan_status-	Current status of the loan (Charged Off, Fully Paid, etc.).
-- next_payment_date-	Date when the next payment is due.
-- member_id-	Unique identifier for the borrower.
-- purpose-	Purpose of the loan (e.g., car).
-- sub_grade-	Subgrade of the loan, providing more granularity to the grade.
-- term-	Term of the loan (e.g., 36 months, 60 months).
-- verification_status-	Status of verification of borrower information (V-Verified,NOT V- Not Verified,SV- Source Verified).
-- annual_income-	Annual income of the borrower in USD.
-- dti-	Debt-to-income ratio of the borrower.
-- installment-	Monthly installment amount for the loan.
-- int_rate-	Interest rate of the loan.
-- loan_amount-	Total amount of the loan in USD.
-- total_acc-	Total number of credit lines the borrower has.
-- btotal_payment-	Total amount paid by the borrower by the end of the loan period in USD.
+|Column Name |Description|
+|------------|-----------|
+|id           | Unique identifier for each loan record.|
+|address_state| Abbreviation of the state where the borrower resides.|
+|application_type| Type of loan application, e.g., INDIVIDUAL.|
+|emp_length| Length of employment of the borrower, in years.|
+|emp_title|	Job title of the borrower.|
+|grade|	Grade assigned to the loan, indicating the risk level (e.g., A, B, C).|
+|home_ownership|	Home ownership status of the borrower (R-RENT,MO- MORTGAGE, O-OWN).|
+|issue_date|	Date the loan was issued.|
+|last_credit_pull_date|	Date of the last credit pull on the borrower.|
+|last_payment_date|	Date of the last payment made by the borrower.|
+|loan_status|	Current status of the loan (Charged Off, Fully Paid, etc.).|
+|next_payment_date|	Date when the next payment is due.|
+|member_id|	Unique identifier for the borrower.|
+|urpose|	Purpose of the loan (e.g., car).|
+|sub_grade|	Subgrade of the loan, providing more granularity to the grade.|
+|term|	Term of the loan (e.g., 36 months, 60 months).|
+|verification_status|	Status of verification of borrower information (V-Verified,NOT V- Not Verified,SV- Source Verified).|
+|annual_income|	Annual income of the borrower in USD.|
+|dti|	Debt-to-income ratio of the borrower.|
+|installment|	Monthly installment amount for the loan.|
+|int_rate|	Interest rate of the loan.|
+|loan_amount|	Total amount of the loan in USD.|
+|total_acc|	Total number of credit lines the borrower has.|
+|btotal_payment|	Total amount paid by the borrower by the end of the loan period in USD.|
 ________
 # Methodology
 ________
@@ -122,7 +124,6 @@ To analyze the loan default rates, we used a pivot table to organize and summari
 =GETPIVOTDATA("ID",$A$3,"Grade","A","Loan_Status","Charged Off")/GETPIVOTDATA("ID",$A$3,"Grade","A")
 ```
 - Converted the result to a percentage format to make the default rates easy to interpret.
-  
 **This calculation provides the percentage of loans that were charged off within each grade, helping to identify high-risk segments.**
 ## Findings
 - Grade A: This grade has the lowest risk, with 93.9% of loans fully paid and only 5.7% charged off. This indicates that loans in Grade A are the most stable, showing minimal default risk.
@@ -133,21 +134,58 @@ To analyze the loan default rates, we used a pivot table to organize and summari
 ![Screenshot (107)](https://github.com/user-attachments/assets/4a089326-9616-422e-8fee-f51bafd1b07a)
 ![Defaut Rate by Grade](https://github.com/user-attachments/assets/78ff2135-4876-492d-ad49-76f979f3ae0e)
 ________
-#### Customer Segment and Region Performance: Assess sales and profitability across customer segments and regions to identify high-value markets for strategic marketing focus.
+#### Interest Rate Impact on Loan Performance.
   ## Approach
+- Rows: Loan status categories (Fully Paid, Charged Off, Current) to segment loans by performance.
+- Values: Average of int_rate to calculate the mean interest rate for each loan status.
   ## Findings
-   ## Results
-   ________
-#### Sales Trend Analysis: Analyse seasonal sales trends to time marketing efforts effectively, maximizing impact during peak sales periods.
+- Charged Off Loans: Higher interest rates for charged-off loans suggest a potential link between borrower risk profiles and defaults. Borrowers in this category may face financial strain, leading to non-repayment.
+- Current Loans: Current loans have the highest average interest rate, which could reflect ongoing loans provided to higher-risk borrowers. These loans might be actively monitored to prevent transitioning to default status.
+- Fully Paid Loans: Fully paid loans have the lowest average interest rate, indicating that borrowers with lower risk profiles are more likely to complete their loan payments.
+  ## Results
+  ![Screenshot (108)](https://github.com/user-attachments/assets/86a31c80-0f44-4ae4-86d7-13ea89bcea93)
+![Average int Rate by Loan Status](https://github.com/user-attachments/assets/7e779e2c-10c0-42d1-ad00-e45490eb5d13)
+________
+#### Analysis of Loan Amount by Home Ownership and Purpose
   ## Approach
+- Columns: Home ownership categories to compare loan amounts across different borrower home ownership statuses.
+- Rows: Loan purpose to analyze how the loan amounts are distributed based on the intended use of the loan.
+- Values: Sum of loan_amount to calculate the total loan amount for each combination of home ownership and purpose.
   ## Findings
+**Top Borrowing Purposes:**
+- Debt Consolidation dominates with a total of $232.5M, indicating that borrowers prioritize restructuring and reducing their debt burdens.
+- Credit Card purposes come second with $58.9M, suggesting heavy reliance on loans to manage credit card debts.
+**Home Ownership Influence:**
+- Borrowers with "Rent" status account for $185.76M (42.6%) of the total, indicating a significant share of the borrowing market.
+- Borrowers with a "Mortgage" status follow with $219.37M (50.3%), showing strong borrowing activity for secured homeownership.
+**Least Borrowing Purposes:**
+- Renewable Energy and Vacation loans have minimal totals, reflecting limited demand in these categories.
+**Educational Loans:**
+- Educational loans are modest at $2.16M, potentially signaling limited reliance on private loans for education financing.
    ## Results
-   ________
-#### Impact of Discounts on Profitability: Explore how discount rates affect overall sales and profit. This will inform pricing and promotional strategies.
+  ![Screenshot (109)](https://github.com/user-attachments/assets/546a286d-64df-4477-97c5-00fd19b6747a)
+![Loan Amount by Home Ownership and Purpose](https://github.com/user-attachments/assets/0ffd2ae5-0672-4f4d-9f08-70d9674d01ec)
+________
+#### Analysis of Loan Status by State
   ## Approach
+- Rows: Address_State to represent each U.S. state.
+- Columns: Loan_Status to display categories (Charged Off, Current, Fully Paid).
+- Values: Count of Loan_Status to measure the number of loans per category in each state.
   ## Findings
+**States with Highest Loan Activity:**
+- California: Recorded the highest number of loans (6,897), with 5,697 fully paid loans and 1,057 charged off.
+- New York: A significant volume of loans (3,701), with 3,123 fully paid loans and 468 charged off.
+- Texas: High activity with 2,666 loans, of which 2,298 were fully paid.
+**States with Lowest Loan Activity:**
+- Idaho: Minimal loan activity with just 6 loans, all in the Fully Paid category.
+- Maine and Nebraska: Recorded only 3 and 5 loans respectively.
+**Regional Observations:**
+- Urban Centers: States with large metropolitan areas (e.g., California, New York, Texas) dominate loan activity, suggesting a concentration of borrowers in these regions.
+- Rural States: States with smaller populations or rural profiles (e.g., Idaho, Wyoming) show significantly lower loan volumes.
    ## Results
-   ________
+  ![Screenshot (110)](https://github.com/user-attachments/assets/3895e085-d264-4d8c-af99-9846edda1c9c)
+![Loan_Status Count by State](https://github.com/user-attachments/assets/5d89d8de-8617-41e2-9ccb-8409a99ec29e)
+________
 ## Findings Summary
 ________
 ## Visualization
