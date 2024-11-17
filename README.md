@@ -167,7 +167,7 @@ ________
 ![Loan Amount by Home Ownership and Purpose](https://github.com/user-attachments/assets/0ffd2ae5-0672-4f4d-9f08-70d9674d01ec)
 ________
 #### Analysis of Loan Status by State
-  ## Approach
+## Approach
 - Rows: Address_State to represent each U.S. state.
 - Columns: Loan_Status to display categories (Charged Off, Current, Fully Paid).
 - Values: Count of Loan_Status to measure the number of loans per category in each state.
@@ -186,6 +186,123 @@ ________
   ![Screenshot (110)](https://github.com/user-attachments/assets/3895e085-d264-4d8c-af99-9846edda1c9c)
 ![Loan_Status Count by State](https://github.com/user-attachments/assets/5d89d8de-8617-41e2-9ccb-8409a99ec29e)
 ________
+#### Analysis of Average Interest Rates by Month
+## Approach
+- A new column named Loan_Issue_Month was created using the formula:
+```excel
+=TEXT([@[Issue_Date]],"mmmm")
+```
+This formula extracts the month from the Issue Date column and formats it as the full month name.
+- Rows: Used the Loan_Issue_Month column to categorize data by month.
+- Values: Calculated the Average of Interest Rate (Int_Rate) for each month, allowing for a clear comparison.
+## Findings
+- January and July recorded the lowest average interest rates (10%).
+- May had the highest average rate (16%).
+- September through November maintained a consistent rate of 12%.
+- February, August, and December saw slightly higher rates (11%) compared to the lowest months.
+## Results
+![Screenshot (111)](https://github.com/user-attachments/assets/d731e706-74c6-461f-a3a2-ca7fb8744dcb)
+![Average Interest Rate Overtime](https://github.com/user-attachments/assets/caf4dbbe-49e9-421f-97f8-02bd7190d80d)
+________
+#### Analysis of Loan Amount Overtime
+## Approach
+- Rows: Used Loan_Issue_Month to categorize data by the month the loan was issued.
+- Values: Calculated the Sum of Loan Amount for each month to analyze the distribution of loan disbursement.
+## Findings
+- November had the highest loan disbursement, with a total of $253,222,325.
+- October and September also recorded high disbursement volumes ($119,571,300 and $46,301,350, respectively).
+- January, February, May, and December saw significantly lower loan disbursement amounts.
+- Loan disbursement appears to build momentum from mid-year, with August marking the start of a significant increase in loan volumes.
+## Results
+![Screenshot (112)](https://github.com/user-attachments/assets/4235f2e2-5ba5-4e79-b862-e643dc33d126)
+![Loan Amount Overtime](https://github.com/user-attachments/assets/ac014fe9-2a95-4a92-b1c4-18a635ede02a)
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+#### Analysis of Average Interest Rates by Month
+## Approach
+## Findings
+## Results
+________
+
 ## Findings Summary
 ________
 ## Visualization
@@ -201,6 +318,7 @@ ________
 # Conclusion
 ________
 ## Summary
+![Screenshot (113)](https://github.com/user-attachments/assets/baf7b987-7f40-43b8-aa42-45ca7015b02d)
 ________
 ## Recommendation
 
