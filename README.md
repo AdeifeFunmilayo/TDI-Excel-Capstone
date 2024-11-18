@@ -357,7 +357,8 @@ ________
 # Conclusion
 ________
 ## Summary
-![Screenshot (113)](https://github.com/user-attachments/assets/baf7b987-7f40-43b8-aa42-45ca7015b02d)
+![Screenshot (113)](https://github.com/user-attachments/assets/5e36a95d-e047-4b32-9e01-c117100cc9b9)
+
 ________
 ## Recommendation
 **Strengthen Risk Management for High-Risk Grades**
