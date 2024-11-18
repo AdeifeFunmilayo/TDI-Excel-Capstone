@@ -71,6 +71,10 @@ ________
 |total_acc|	Total number of credit lines the borrower has.|
 |btotal_payment|	Total amount paid by the borrower by the end of the loan period in USD.|
 ________
+# Tools Used
+- Excel for data cleaning and visualization
+- Github for documentaion
+________
 # Methodology
 ________
 ## Data Cleaning:
@@ -104,10 +108,11 @@ ________
 ![Screenshot (105)](https://github.com/user-attachments/assets/68efe21f-df49-434c-b81f-3436bdefb616)
 ___________
 ## Exploratory Data Analysis (EDA):
-- Total Sales
-- Total Profit.
-- Average Sales per Order
-- Profit Margin.
+- Total Loan Amount.
+- Total Number of Job Title.
+- Total Transaction
+- Total Address State
+- Default Rate
   ________
 # Analysis
   ________
@@ -217,103 +222,137 @@ ________
 ![Screenshot (112)](https://github.com/user-attachments/assets/4235f2e2-5ba5-4e79-b862-e643dc33d126)
 ![Loan Amount Overtime](https://github.com/user-attachments/assets/ac014fe9-2a95-4a92-b1c4-18a635ede02a)
 ________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-#### Analysis of Average Interest Rates by Month
-## Approach
-## Findings
-## Results
-________
-
 ## Findings Summary
+**Loan Default Rates by Grades**
+- Grade A: 5.7% default rate (lowest risk).
+- Grade G: 31% default rate (highest risk).
+- Default rates increase consistently as grades decline from A to G.
+  
+**Impact of Interest Rates on Loan Performance**
+- Fully Paid Loans have the lowest average interest rates.
+- Charged-Off Loans have higher average interest rates.
+- Current Loans have the highest average interest rates.
+  
+**Loan Amount by Purpose**
+- Top Borrowing Purposes:
+1. Debt Consolidation: $232.5M.
+2. Credit Card Debt: $58.9M.
+- Least Borrowing Purposes:
+1. Renewable Energy and Vacation loans.
+   
+**Loan Amount by Homeownership**
+- Borrowers with "Rent" status: $185.76M (42.6%).
+- Borrowers with "Mortgage" status: $219.37M (50.3%).
+  
+**Regional Loan Analysis**
+- States with Highest Loan Activity:
+1. California: 6,897 loans.
+2. New York: 3,701 loans.
+- States with Lowest Loan Activity:
+1. Idaho: 6 loans.
+2. Maine and Nebraska: 3 and 5 loans, respectively.
+   
+**Analysis of Average Interest Rates by Month**
+- Lowest Interest Rates: January and July (10%).
+- Highest Interest Rate: May (16%).
+- Consistent Rates: September–November (12%).
+  
+**Loan Amount Disbursement Over Time**
+- Peak Disbursement Month: November ($253,222,325).
+- Other High-Disbursement Months: October and September.
+- Low Disbursement Periods: January, February, May, and December.
 ________
 ## Visualization
 ________
 # Discussion
 ________
 ## Interpretation of Results
+**Loan Default Rates by Grades**
+- Grades A–C: Borrowers in these grades exhibit lower risk, as evidenced by their relatively low default rates. Grade A, with the lowest default rate, represents highly creditworthy borrowers.
+- Grades D–G: Higher default rates in these grades indicate elevated risk profiles, suggesting these borrowers are less likely to meet their repayment obligations.
+  
+**Impact of Interest Rates on Loan Performance**
+- Borrowers with fully paid loans benefit from lower interest rates, suggesting they have stronger financial stability and lower credit risk.
+- Charged-off loans carry higher interest rates, which may indicate higher credit risk associated with these borrowers.
+- The high rates for current loans might highlight active monitoring for potential risk factors.
+  
+**Loan Amount by Purpose**
+- The dominance of debt consolidation and credit card debt as borrowing purposes reflects a borrower preference for managing existing debt obligations.
+- Low loan volumes for categories like renewable energy and vacations suggest limited borrower interest or financial necessity in these areas.
+  
+**Loan Amount by Homeownership**
+- Borrowers with mortgages are the primary loan recipients, likely due to the stability and security associated with homeownership.
+- Borrowers with rental statuses also represent a significant proportion, potentially signaling diverse borrower demographics.
+
+**Regional Loan Analysis**
+- Urban centers like California, New York, and Texas dominate loan activity, aligning with their larger populations and economic opportunities.
+- Sparse activity in states like Idaho and Maine may reflect lower population densities or limited demand for loans in rural areas.
+  
+**Analysis of Average Interest Rates by Month**
+- Lower interest rates in January and July might coincide with seasonal borrower behavior or promotional offers.
+- May's high rates suggest an anomaly or increased demand for higher-risk loans.
+  
+**Loan Amount Disbursement Over Time**
+- The sharp increase in November disbursement suggests end-of-year financial needs or company-driven incentives.
+- Lower disbursement in early months (January–May) reflects slower loan activity, potentially due to reduced financial pressures during this period.
 ________
 ## Implications
+**Loan Default Rates by Grades**
+- Grades A–C: These grades demonstrate stability, suggesting they are ideal candidates for TDI's expansion in low-risk lending. Offering competitive interest rates to attract more borrowers in these categories could boost profitability with minimal risk.
+-  Grades D–G: The high default rates in these grades call for stricter loan approval criteria, such as higher credit score thresholds or reduced loan amounts, to mitigate losses.
+
+**Impact of Interest Rates on Loan Performance**
+- Higher interest rates for charged-off loans indicate a need to assess whether risk-based pricing strategies are effective in balancing profitability with repayment ability. Revising these rates for high-risk borrowers may improve repayment outcomes.
+- The comparatively lower rates for fully paid loans highlight the value of attracting low-risk borrowers through favorable loan terms.
+  
+**Loan Amount by Purpose**
+- The dominance of debt consolidation and credit card refinancing suggests TDI should allocate resources to streamline and promote these loan products, given their high demand.
+- Limited interest in categories like renewable energy and vacations may require reevaluating the feasibility of offering loans in these areas or introducing incentives to stimulate interest.
+  
+**Loan Amount by Homeownership**
+- High borrowing among homeowners with mortgages indicates a potentially stable customer segment. Tailored loan products for homeowners could enhance customer satisfaction and retention.
+- Borrowers with rental statuses represent a diverse demographic but may carry higher risk, requiring detailed risk assessment models for this group.
+  
+**Regional Loan Analysis**
+- Urban centers like California, New York, and Texas should remain a focus for TDI’s marketing and lending strategies due to their high loan activity and repayment potential.
+- Limited activity in rural states like Idaho and Maine suggests an opportunity to explore untapped markets, potentially with targeted campaigns or partnerships.
+  
+**Analysis of Average Interest Rates by Month**
+- Seasonal variations in interest rates (e.g., lower rates in January and July) may provide opportunities to align marketing campaigns or promotional offers to attract borrowers during these periods.
+- Higher rates in May may necessitate further analysis to determine if they reflect borrower behavior or internal policy decisions.
+  
+**Loan Amount Disbursement Over Time**
+- The sharp rise in November disbursements suggests a seasonal pattern in borrowing needs. TDI could capitalize on this trend by introducing targeted offers or marketing campaigns leading up to year-end.
+- Slower disbursement in early months may indicate a period of low demand, allowing TDI to focus on operational improvements or planning during this time.
 ________
 ## Actionable Insights
+**Loan Default Rates by Grades**
+- Focus lending on Grades A–C by offering competitive interest rates and tailored loan packages to attract low-risk borrowers.
+- Introduce stricter approval criteria for Grades D–G, such as higher credit score thresholds or additional collateral requirements, to minimize default risks.
+  
+**Interest Rate Management**
+- Review the effectiveness of risk-based pricing strategies for high-risk borrowers (charged-off loans). Consider offering financial literacy programs or flexible repayment terms to improve repayment behavior.
+- Leverage the low-interest rate pattern for fully paid loans to develop marketing campaigns targeting low-risk customer segments.
+  
+**Loan Purpose Strategy**
+- Allocate more resources to debt consolidation and credit card refinancing, which dominate loan purposes, to maximize ROI.
+- Explore opportunities to promote less-utilized categories like renewable energy by partnering with organizations in green initiatives or offering incentives.
+  
+**Homeownership Segmentation**
+- Develop specialized loan products for mortgage holders as a relatively stable borrower segment.
+- Enhance risk assessment for renters by integrating demographic and employment data to refine approval criteria.
+  
+**Regional Focus**
+- Double down on marketing and lending efforts in states with high activity, such as California, New York, and Texas, by tailoring campaigns to urban borrowers’ needs.
+- Explore untapped rural markets (e.g., Idaho, Maine) by introducing small business loan programs or local partnerships to attract borrowers.
+  
+**Interest Rates by Month**
+- Use January and July (lowest interest rate periods) to launch promotional campaigns aimed at attracting new borrowers with favorable terms.
+- Analyze May’s higher rates for potential policy adjustments to ensure they remain competitive and align with borrower expectations.
+  
+**Loan Disbursement Over Time**
+- Develop year-end promotional campaigns to capitalize on the sharp increase in loan demand during November.
+- Use the slower periods in January–May to implement operational enhancements or roll out pilot programs for new loan products.
 ________
 # Conclusion
 ________
@@ -321,4 +360,26 @@ ________
 ![Screenshot (113)](https://github.com/user-attachments/assets/baf7b987-7f40-43b8-aa42-45ca7015b02d)
 ________
 ## Recommendation
-
+**Strengthen Risk Management for High-Risk Grades**
+- Implement stricter loan approval criteria for Grades D–G, such as higher credit score thresholds, reduced loan amounts, or mandatory collateral.
+- Introduce a risk monitoring system to flag early signs of potential defaults.
+  
+**Optimize Interest Rate Policies**
+- Offer lower interest rates to borrowers with strong credit histories to incentivize timely repayments and reduce default risks.
+- For high-risk borrowers, consider offering structured repayment plans with options to adjust terms based on repayment performance.
+  
+**Focus on High-Performing Loan Purposes**
+- Prioritize resources and marketing efforts on debt consolidation and credit card refinancing, as they account for a significant portion of loan disbursements.
+- Explore targeted campaigns to promote less popular loan purposes, such as renewable energy and education, to diversify the loan portfolio.
+  
+**Leverage Regional Opportunities**
+- Expand lending and marketing efforts in states with high activity, such as California, New York, and Texas, to maximize impact.
+- Develop tailored loan products for rural areas with low activity, focusing on small businesses or agricultural financing.
+  
+**Enhance Seasonal Strategies**
+- Use January and July, periods of lower average interest rates, to launch promotional campaigns aimed at attracting low-risk borrowers.
+- Prepare for the high demand in November by increasing operational capacity and running targeted campaigns to capture a larger market share.
+  
+**Improve Customer Segmentation**
+- Segment borrowers by homeownership, income, and credit risk to tailor loan products and improve customer satisfaction.
+- Introduce programs for renters to enhance repayment reliability, such as educational tools or credit-building initiatives.
